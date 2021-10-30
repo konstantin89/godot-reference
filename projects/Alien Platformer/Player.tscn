@@ -1,0 +1,48 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk10.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk11.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk07.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk05.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk02.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk04.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk09.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk08.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk03.png" type="Texture" id=10]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk06.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/Player/p1_walk/p1_walk01.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 24.1644
+height = 33.9729
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 497.134, 281.181 )
+collision_mask = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2.10223, 2.66696 )
+frames = SubResource( 2 )
+animation = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.10224, 6.30672 )
+shape = SubResource( 1 )
