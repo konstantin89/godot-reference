@@ -3,7 +3,7 @@ extends KinematicBody2D
 var linear_velocity = Vector2(0, 0)
 
 const UP_DIRECTION = Vector2(0, -1)
-const MOVING_SPEED = 300
+const MOVING_SPEED = 600
 const GRAVITY = 10
 
 onready var sprite = $Sprite

@@ -3,7 +3,7 @@
 ## Free game resources
 
 ### Graphics
-[kenney](https://www.kenney.nl/)
+[kenney](https://www.kenney.nl/)  
 [opengameart](https://opengameart.org)
 
 ### Sounds
@@ -60,3 +60,22 @@ Layer is represents the object's layer.
 The mask is the layers that the object can interract with.  
 ![](img/layer_vs_mask.PNG)
 
+# Camera
+Camera should be child node of the player node.  
+`Current` checkbox will allow camerat to follow player character.  
+`Drag margin` and `Smoothing->Speed` can toggle the sensitivity of the camera movments.  
+
+# Paralax Background
+`ParallaxBackground` should be child node of the camera.  
+`ParallaxBackground` can have few `ParallaxLayer` child nodes.  
+Each `ParallaxLayer` should have child node of `TextureRect` for the image.    
+
+Make sure to set `ParallaxBackground`->Scroll->"`Ignore Camera Zoom`".
+
+`ParallaxLayer`->Motion->Mirroring setting should allow to stretch the backgroud   
+over the whole level.  
+
+Use the `ParallaxLayer`->Motion->Scale to controll how fast the background is moving.  
+Remmember that the most far object should have the lowest scale.  
+
+Use the `ParallaxLayer`->Motion->Offset to controll the background location on the level.  
