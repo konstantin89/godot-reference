@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Graphics/Player/p1_walk/p1_walk10.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -15,8 +15,10 @@
 [ext_resource path="res://Graphics/Backgrounds/background_1.png" type="Texture" id=13]
 [ext_resource path="res://Graphics/Backgrounds/background_2.png" type="Texture" id=14]
 [ext_resource path="res://Graphics/Backgrounds/background_3.png" type="Texture" id=15]
+[ext_resource path="res://Sounds/jump.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/player_hurt.ogg" type="AudioStream" id=17]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 1 ) ],
 "loop": true,
@@ -29,13 +31,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 24.1644
 height = 33.9729
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 504.021, 204.401 )
-collision_mask = 2
+collision_mask = 6
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -43,12 +45,12 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.10223, 2.66696 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2.10224, 6.30672 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -94,3 +96,9 @@ texture = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
