@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Graphics/Backgrounds/background_1.png" type="Texture" id=1]
 [ext_resource path="res://Font.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://End game control node.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/End game control node.gd" type="Script" id=3]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 72

@@ -11,7 +11,8 @@
 
 
 ## Short keys
-F1 - Open documentation.  
+F1 - Open documentation  
+Ctrl+D - Duplicate object  
 
 
 ## Important object classes
@@ -22,6 +23,9 @@ F1 - Open documentation.
 `Area2d` - Used for 2D area that has `on_body_entered` signals.  
 `AudioStreamPlayer` - Sound player that have no location realted data.  
 `AudioStreamPlayer2D` - Sound player that is related to specific point.  
+`CanvasLayer` - Layer that has no position. Fits good for GUI.  
+`Control` - Base class for all GUI nodes.  
+`TextureRect` - For non interactive images and objects.
 
 ## Creating main character
 1. Create `KinematicBody2D` scene for the player.
@@ -112,3 +116,72 @@ Here is and example:
 $DamageSound.stream = load("res://Sounds/enemy_dying.ogg")
 $DamageSound.play()
 ```
+
+## Signal groups
+Signal groups can be used to group logic in single functions.  
+
+For example:  
+GameRules signal group can have signals like "take_damage" or "game_over".  
+To define `GameRules` signal group create GameRules.gd script under the game level scene. Then add the following code:  
+
+```
+func _ready():
+	add_to_group("GameRules")
+
+func end_game():
+   pass
+   // End game logic goes here
+```
+
+To call end_game signal, add the following code in the relevant scene code:  
+```
+get_tree().call_group("GameRules", "end_game")
+```
+
+## GUI
+
+1. Create new GUI scene fron `CanvasLayer`.
+2. Add `Control` child node.    
+3. Set `Control` layout to `Full Rect`.  
+4. Add `HBoxContainer` for all the data to be shown.  
+5. After GUI scene is ready, add instance of it under your level scene.  
+
+## Adding/Removing scene instances dynamicallty
+We can add and remove scene instances dynamically.  
+Here is an example, in which we add/remove `TextureRect` scenes  
+on the GUI canvas:   
+```
+func add_lives(lives_number):
+
+   # Adding heart images on the game GUI
+	while lives_number > $Control/Lives.get_child_count():
+		$Control/Lives.add_child(load("res://Scenes/heart.tscn").instance())
+	
+	
+func remove_lives(lives_number):
+
+   # Removing heart image on the game GUI
+	if lives_number <  $Control/Lives.get_child_count():
+		var heart =  $Control/Lives.get_child(0)
+		heart.queue_free()
+
+```
+
+## Adding objects with animation
+
+1. Create new scene fron `Node2d`.
+2. Create child node of `Area2d`.
+3. Add `Sprite` and `CollisionShape2d`.
+4. Add child node of `AnimationPlayer2d`.
+5. In the animation bottom tab, press `Add Track`.  
+6. In the `Add Truck` choose the setting you want to animate.
+7. Create the animation.
+8. Set the animation to `autoplay on load`.
+9. Set the animation to `loop`.
+
+### Autoplay on load
+![](img/animation_autoplay.PNG)
+
+### Animation loop
+
+![](img/animation_loop.PNG)

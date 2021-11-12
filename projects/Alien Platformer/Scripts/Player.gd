@@ -9,7 +9,6 @@ const DEATH_HIGHT = 2000
 const JUMP_SPEED = 1000
 
 onready var sprite = $Sprite
-var lives = 3
 
 func _physics_process(delta):
 		
@@ -37,7 +36,7 @@ func _physics_process(delta):
 func apply_gravity():
 	
 	if(position.y > DEATH_HIGHT):
-		get_tree().change_scene("res://End game control node.tscn")
+		get_tree().call_group("GameRules", "end_game")
 	
 	if is_on_floor():
 		linear_velocity.y = 0
@@ -59,11 +58,7 @@ func animate():
 		
 func take_damage():
 		print("Player takes danage")
-		
 		$DamageSound.play()
-		lives -= 1
 		linear_velocity.y = -JUMP_SPEED*0.5
 		
-		if lives == 0:
-			get_tree().change_scene("res://End game control node.tscn")
 
