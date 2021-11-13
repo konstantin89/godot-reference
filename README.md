@@ -25,7 +25,9 @@ Ctrl+D - Duplicate object
 `AudioStreamPlayer2D` - Sound player that is related to specific point.  
 `CanvasLayer` - Layer that has no position. Fits good for GUI.  
 `Control` - Base class for all GUI nodes.  
-`TextureRect` - For non interactive images and objects.
+`TextureRect` - For non interactive images and objects.  
+`RayCast2d` - Has `is_colliding()` API to detect if objects are close.  
+
 
 ## Creating main character
 1. Create `KinematicBody2D` scene for the player.
@@ -185,3 +187,17 @@ func remove_lives(lives_number):
 ### Animation loop
 
 ![](img/animation_loop.PNG)
+
+## Singeltons and Global variables
+
+To create singleton file use the following steps:
+1. Create new script file.
+2. Go to `Project Settings`.
+3. Go to `Autoload tab`.
+4. Add your script.
+5. Enable the `Singleton` option for your script.
+
+If your file is named `Globals.gd`, you can access it globaly  
+from any file by writing `Globals.variable_name`.  
+
+![](img/singelton.PNG)

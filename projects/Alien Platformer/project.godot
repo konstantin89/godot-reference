@@ -14,6 +14,10 @@ config/name="Alien Platformer"
 run/main_scene="res://Scenes/Level1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Scripts/Globals.gd"
+
 [input]
 
 left={
@@ -42,6 +46,7 @@ down={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Level"
 2d_physics/layer_3="Cactus"
+2d_physics/layer_4="Coins"
 
 [physics]
 

@@ -18,7 +18,6 @@
 [ext_resource path="res://Sounds/jump.ogg" type="AudioStream" id=16]
 [ext_resource path="res://Sounds/player_hurt.ogg" type="AudioStream" id=17]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 1 ) ],
@@ -38,7 +37,7 @@ height = 33.9729
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 504.021, 204.401 )
-collision_mask = 6
+collision_mask = 14
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

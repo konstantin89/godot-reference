@@ -41,7 +41,7 @@ func apply_gravity():
 	if is_on_floor():
 		linear_velocity.y = 0
 	else:
-		linear_velocity.y += GRAVITY
+		linear_velocity.y += Globals.GARVITY
 		
 	if is_on_ceiling():
 		linear_velocity.y = 0
